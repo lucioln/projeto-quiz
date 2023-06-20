@@ -10,7 +10,7 @@ export default function handler(
 
     const questao = questoes.filter(questao => questao.id === id)
     if(questao.length === 1){
-        res.status(200).json(questao[0].toObject())
+        res.status(200).json(questao[0].embaralharRespostas().toObject())
     }else{
         res.status(204).end()
     }

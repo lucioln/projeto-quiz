@@ -25,6 +25,10 @@ export default class RespostaModel{
         }
     }
 
+    revelar(){
+        return new RespostaModel(this.#valor, this.#certa, true)
+    }
+
     get valor(){
         return this.#valor
     }

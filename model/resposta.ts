@@ -3,10 +3,26 @@ export default class RespostaModel{
     #certa: boolean
     #revelada: boolean
 
-    constructor(valor:string, certa:boolean, revelada:boolean){
+    constructor(valor:string, certa:boolean, revelada:boolean = false){
         this.#valor = valor
         this.#certa = certa
         this.#revelada = revelada
+    }
+
+    static certa(valor:string){
+        return new RespostaModel(valor, true)
+    }
+
+    static errada(valor:string){
+        return new RespostaModel(valor, false)
+    }
+
+    toObject() {
+        return{
+            valor: this.#valor,
+            certa: this.#certa,
+            revelada: this.#revelada
+        }
     }
 
     get valor(){

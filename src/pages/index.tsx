@@ -1,9 +1,8 @@
 import Head from 'next/head'
-import Questao from '../../components/Questao'
 import QuestaoModel from '../../model/questao'
 import RespostaModel from '../../model/resposta'
 import { useState } from 'react'
-import Botao from '../../components/Botao'
+import Questionario from '../../components/Questionario'
 
 export default function Home() {
 
@@ -14,15 +13,12 @@ export default function Home() {
     RespostaModel.certa('Preta')
   ])
 
-  function onResponse(indice:number){
-    console.log(indice)
-    setQuestao(questao.responderCom(indice))
+  function onResponse(){
+  
   }
 
-  function tempoEsgotado(){
-    if(!questao.respondida){
-      setQuestao(questao.responderCom(-1))
-    }
+  function irPraProximoPasso(){
+    
   }
 
   const [questao, setQuestao] = useState(questaoMock)
@@ -43,8 +39,7 @@ export default function Home() {
           alignItems: 'center',
           height: '100vh'
         }}>
-          <Questao valor={questao} onResponse={onResponse} tempoEsgotado={tempoEsgotado}/>
-          <Botao texto='Próxima'/>
+          <Questionario questao={questao} ultima onResponse={onResponse} irPraProximoPasso={irPraProximoPasso}/>
         </div>
       </main>
     </>

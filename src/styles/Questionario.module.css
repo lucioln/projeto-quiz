@@ -1,0 +1,4 @@
+.questionario{
+    display: flex;
+    flex-direction: column;
+}

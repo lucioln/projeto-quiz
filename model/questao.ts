@@ -1,6 +1,6 @@
 import { Embaralhar } from "../functions/arrays"
 
-export default class QuestalModel{
+export default class QuestaoModel{
     #id: number
     #enunciado: string
     #respostas: any[]
@@ -33,19 +33,19 @@ export default class QuestalModel{
         return false
     }
 
-    responderCom(indice: number): QuestalModel{
+    responderCom(indice: number): QuestaoModel{
         const acertou = this.#respostas[indice]?.certa
         const respostas = this.#respostas.map((resposta,i ) => {
             const respostaSelecionada = indice === i
             const deveRevelar = respostaSelecionada || resposta.certa
             return  deveRevelar ? resposta.revelar() : resposta
         })
-        return new QuestalModel(this.#id, this.enunciado, respostas, acertou)
+        return new QuestaoModel(this.#id, this.enunciado, respostas, acertou)
     }
 
-    embaralharRespostas(): QuestalModel{
+    embaralharRespostas(): QuestaoModel{
         let respostasEmbaralhadas = Embaralhar(this.#respostas)
-        return new QuestalModel(this.#id, this.#enunciado, respostasEmbaralhadas, this.#acertou)
+        return new QuestaoModel(this.#id, this.#enunciado, respostasEmbaralhadas, this.#acertou)
     }
 
     toObject(){

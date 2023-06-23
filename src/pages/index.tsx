@@ -3,6 +3,7 @@ import Questao from '../../components/Questao'
 import QuestaoModel from '../../model/questao'
 import RespostaModel from '../../model/resposta'
 import { useState } from 'react'
+import Botao from '../../components/Botao'
 
 export default function Home() {
 
@@ -18,6 +19,12 @@ export default function Home() {
     setQuestao(questao.responderCom(indice))
   }
 
+  function tempoEsgotado(){
+    if(!questao.respondida){
+      setQuestao(questao.responderCom(-1))
+    }
+  }
+
   const [questao, setQuestao] = useState(questaoMock)
 
   return (
@@ -31,11 +38,13 @@ export default function Home() {
       <main>
         <div style={{
           display: 'flex',
+          flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
           height: '100vh'
         }}>
-          <Questao valor={questao} onResponse={onResponse}/>
+          <Questao valor={questao} onResponse={onResponse} tempoEsgotado={tempoEsgotado}/>
+          <Botao texto='Próxima'/>
         </div>
       </main>
     </>

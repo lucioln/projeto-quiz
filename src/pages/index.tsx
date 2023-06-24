@@ -5,7 +5,7 @@ import Questionario from '../../components/Questionario'
 import { useRouter } from 'next/router'
 
 
-const BASE_URL = 'http://localhost:3000/api'
+const BASE_URL = 'https://projeto-quiz-git-main-lucioln.vercel.app/api'
 
 export default function Home() {
 
@@ -25,7 +25,6 @@ export default function Home() {
   async function loadQuestion(idQuestao: number) {
     const resp = await fetch(`${BASE_URL}/questoes/${idQuestao}`)
     const json = await resp.json()
-    console.log(json)
     const novaQuestao = QuestaoModel.fromObject(json)
     setQuestao(novaQuestao)
   }

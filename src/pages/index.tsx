@@ -5,7 +5,7 @@ import Questionario from '../../components/Questionario'
 import { useRouter } from 'next/router'
 
 
-const BASE_URL = 'https://projeto-quiz-psi.vercel.app//api'
+const BASE_URL = 'https://projeto-quiz-psi.vercel.app/api'
 
 export default function Home() {
 

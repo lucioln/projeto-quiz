@@ -5,7 +5,7 @@ import Questionario from '../../components/Questionario'
 import { useRouter } from 'next/router'
 
 
-const BASE_URL = 'https://projeto-quiz-psi.vercel.app/api'
+const BASE_URL = 'http://localhost:3000/api'
 
 export default function Home() {
 
@@ -25,6 +25,7 @@ export default function Home() {
   async function loadQuestion(idQuestao: number) {
     const resp = await fetch(`${BASE_URL}/questoes/${idQuestao}`)
     const json = await resp.json()
+    console.log(json)
     const novaQuestao = QuestaoModel.fromObject(json)
     setQuestao(novaQuestao)
   }
@@ -36,10 +37,6 @@ export default function Home() {
   useEffect(() => {
     idsDasQuestoes.length > 0 && loadQuestion(idsDasQuestoes[0])
   }, [idsDasQuestoes])
-
-  useEffect(() => {
-    console.log(respostasCertas)
-  }, [respostasCertas])
 
   function onResponse(questaoRespondida: QuestaoModel) {
     setQuestao(questaoRespondida)
@@ -87,7 +84,7 @@ export default function Home() {
             ultima={idProximaPergunta() === undefined}
             onResponse={onResponse}
             irPraProximoPasso={irPraProximoPasso} />
-            : false}
+            : null}
         </div>
       </main>
     </>

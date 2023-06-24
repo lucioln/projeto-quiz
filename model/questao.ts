@@ -61,7 +61,7 @@ export default class QuestaoModel {
     toObject() {
         return {
             id: this.#id,
-            enununciado: this.#enunciado,
+            enunciado: this.#enunciado,
             acertou: this.#acertou,
             respondida: this.respondida,
             respostas: this.#respostas.map(resp => resp.toObject()),
